@@ -30,8 +30,8 @@ try {
 
   const message = [
     `UI file changed: ${file}.`,
-    'When this screen is done, review it with TheDesignAgent: call the `ux` tool,',
-    'and `visual` with `render_url` if the page is running locally.',
+    'When this screen is done, review it with TheDesignAgent: call the `Ux` tool,',
+    'and `Visual` with `render_url` if the page is running locally.',
     'The design-loop skill has the steps.',
   ].join(' ')
 

@@ -2,8 +2,8 @@
 
 UX and visual judgment for agent-built UI, for Claude Code and Grok Build.
 
-- **Before you build:** a brief calibrated to your project, its users and the screen (`discover`).
-- **After you build:** a 0–10 score with findings for UX and visual design (`ux`, `visual`), from a real screenshot when the page is running.
+- **Before you build:** a brief calibrated to your project, its users and the screen (`Discover`).
+- **After you build:** a 0–10 score with findings for UX and visual design (`Ux`, `Visual`), from a real screenshot when the page is running.
 - **Every agent on the repo shares the same project context** through a `.thedesignagent` file.
 
 ## Install
@@ -25,7 +25,7 @@ Requires Node.js 20+ (the MCP server runs through `npx`).
 
 | Piece | What it does |
 | --- | --- |
-| MCP server `thedesignagent` | The `discover`, `ux` and `visual` tools ([`@thedesignagent/mcp`](https://www.npmjs.com/package/@thedesignagent/mcp)) |
+| MCP server `thedesignagent` | The `Discover`, `Ux` and `Visual` tools ([`@thedesignagent/mcp`](https://www.npmjs.com/package/@thedesignagent/mcp)) |
 | Skill `design-loop` | Teaches the agent the brief → build → review → fix loop. Loads automatically for UI work |
 | `/thedesignagent:brief [task]` | Get a build brief for a screen |
 | `/thedesignagent:review [url\|file]` | Score a page, a file, or every UI file changed on the branch |
@@ -34,7 +34,7 @@ Requires Node.js 20+ (the MCP server runs through `npx`).
 
 ## Pages behind login
 
-`visual` screenshots the page with headless Chrome. For pages behind login, capture a session once:
+`Visual` screenshots the page with headless Chrome. For pages behind login, capture a session once:
 
 ```
 npx -y --package=@thedesignagent/mcp thedesignagent-auth capture http://localhost:3000

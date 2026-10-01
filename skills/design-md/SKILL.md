@@ -5,7 +5,7 @@ description: Use when creating or updating a project's DESIGN.md, the design sys
 
 # Writing DESIGN.md
 
-DESIGN.md describes a project's visual identity for coding agents. It follows Google's [design.md format](https://github.com/google-labs-code/design.md): YAML frontmatter holds machine-readable tokens, and markdown prose explains why the values exist and how to apply them where tokens can't decide. TheDesignAgent's `visual` review checks brand compliance against it.
+DESIGN.md describes a project's visual identity for coding agents. It follows Google's [design.md format](https://github.com/google-labs-code/design.md): YAML frontmatter holds machine-readable tokens, and markdown prose explains why the values exist and how to apply them where tokens can't decide. TheDesignAgent's `Visual` review checks brand compliance against it.
 
 Put it in the repo root.
 
@@ -76,4 +76,4 @@ Keep the prose about intent and edge cases; the values live in the frontmatter.
 ## After writing
 
 - Show the user the inferred values and ask them to confirm.
-- If TheDesignAgent tools are available, run `visual` on one existing page to check the file and the UI agree.
+- If TheDesignAgent tools are available, run `Visual` on one existing page to check the file and the UI agree.

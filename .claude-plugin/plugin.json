@@ -14,7 +14,7 @@
     "api_key": {
       "type": "string",
       "title": "TheDesignAgent API key",
-      "description": "Your sk_ key from https://thedesignagent.ai/dashboard/api-keys",
+      "description": "Your tda_ key from https://thedesignagent.ai/dashboard/api-keys",
       "required": true,
       "sensitive": true
     }
