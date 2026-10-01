@@ -1,6 +1,6 @@
 ---
 name: design-loop
-description: Use when building or changing a UI screen, page or component and TheDesignAgent's MCP tools (discover, ux, visual) are available. Get a build brief before building, then score the result and fix what the review finds.
+description: Use when building or changing a UI screen, page or component and TheDesignAgent's MCP tools (Discover, Ux, Visual) are available. Get a build brief before building, then score the result and fix what the review finds.
 user-invocable: false
 ---
 
