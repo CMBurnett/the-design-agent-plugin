@@ -21,6 +21,8 @@ Grok Build reads Claude Code plugins, so the same install works there.
 
 Requires Node.js 20+ (the MCP server runs through `npx`).
 
+After installing or updating the plugin, fully restart Claude Code (in VS Code: Command Palette → Developer: Reload Window). Reloading plugins refreshes skills and hooks but keeps the old MCP server running.
+
 ## What's included
 
 | Piece | What it does |

@@ -55,5 +55,6 @@ Don't try to work out the app's auth or build `auth_seed` yourself.
 
 - **Account error**: show the user the message and stop calling the tools. Don't retry.
 - **Rate limited**: wait briefly, retry once, then carry on without the review.
-- **Authentication failed**: the API key is missing or wrong. Tell the user to set it in the plugin's settings (`/plugin` → TheDesignAgent → configure).
+- **Authentication failed** (the response itself is a 401 or 403): the user's API key is missing or wrong. Tell the user to set it in the plugin's settings.
+- **Pipeline error** (a 5xx, such as `Pipeline error (503)`): a problem on TheDesignAgent's side, even if the detail mentions an API key; that is the pipeline's own key, not the user's. Tell the user the service is having trouble, keep any extracted `project_model` so a retry is one call, and carry on without the brief or review.
 - **Pipeline unavailable**: carry on with the build and say the review couldn't run.
