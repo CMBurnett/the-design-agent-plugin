@@ -1,0 +1,22 @@
+{
+  "name": "thedesignagent",
+  "displayName": "TheDesignAgent",
+  "version": "0.1.0",
+  "description": "UX and visual judgment for agent-built UI: a build brief before you build, a scored review after.",
+  "author": {
+    "name": "TheDesignAgent",
+    "url": "https://thedesignagent.ai"
+  },
+  "homepage": "https://thedesignagent.ai",
+  "repository": "https://github.com/CMBurnett/the-design-agent-plugin",
+  "keywords": ["design", "ux", "ui-review", "design-system", "accessibility"],
+  "userConfig": {
+    "api_key": {
+      "type": "string",
+      "title": "TheDesignAgent API key",
+      "description": "Your sk_ key from https://thedesignagent.ai/dashboard/api-keys",
+      "required": true,
+      "sensitive": true
+    }
+  }
+}

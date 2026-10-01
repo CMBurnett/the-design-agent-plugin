@@ -1,0 +1,16 @@
+{
+  "name": "thedesignagent",
+  "description": "TheDesignAgent plugins for Claude Code and Grok Build",
+  "owner": {
+    "name": "TheDesignAgent",
+    "url": "https://thedesignagent.ai"
+  },
+  "plugins": [
+    {
+      "name": "thedesignagent",
+      "source": "./",
+      "description": "UX and visual judgment for agent-built UI: a build brief before you build, a scored review after.",
+      "category": "design"
+    }
+  ]
+}
