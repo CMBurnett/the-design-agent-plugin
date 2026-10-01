@@ -53,7 +53,7 @@ Don't try to work out the app's auth or build `auth_seed` yourself.
 
 ## When things go wrong
 
-- **Out of credits (insufficient credits)**: tell the user to top up at thedesignagent.ai/dashboard and stop calling the tools. Don't retry.
+- **Account error**: show the user the message and stop calling the tools. Don't retry.
 - **Rate limited**: wait briefly, retry once, then carry on without the review.
 - **Authentication failed**: the API key is missing or wrong. Tell the user to set it in the plugin's settings (`/plugin` → TheDesignAgent → configure).
 - **Pipeline unavailable**: carry on with the build and say the review couldn't run.
