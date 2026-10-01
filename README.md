@@ -15,7 +15,7 @@ In Claude Code:
 /plugin install tda@thedesignagent
 ```
 
-You'll be asked for your API key. Get one at [thedesignagent.ai/dashboard/api-keys](https://thedesignagent.ai/dashboard/api-keys).
+You'll be asked for your API key. If you weren't, or the tools don't appear, set it in Manage Plugins → TheDesignAgent → configure (gear icon), then restart Claude. Get one at [thedesignagent.ai/dashboard/api-keys](https://thedesignagent.ai/dashboard/api-keys).
 
 Grok Build reads Claude Code plugins, so the same install works there.
 
@@ -29,10 +29,11 @@ After installing or updating the plugin, fully restart Claude Code (in VS Code: 
 | --- | --- |
 | MCP server `the_design_agent` | The `Discover`, `Ux` and `Visual` tools ([`@thedesignagent/mcp`](https://www.npmjs.com/package/@thedesignagent/mcp)) |
 | Skill `design-loop` | Teaches the agent the brief → build → review → fix loop. Loads automatically for UI work |
+| `/tda:setup` | Set up a repo once: registers the project (`.thedesignagent`) and creates `DESIGN.md` if missing. Runs automatically before the first UI task |
 | `/tda:brief [task]` | Get a build brief for a screen |
 | `/tda:review [url\|file]` | Score a page, a file, or every UI file changed on the branch |
 | Skill `design-md` | Write or update the project's `DESIGN.md` from its real tokens |
-| Hook | After UI files change, reminds the agent to run a review (first edit, then every 8th) |
+| Hooks | At session start: warns if the API key isn't set, and prompts setup in UI repos that aren't registered yet. After UI files change: reminds the agent to run a review (first edit, then every 8th) |
 
 ## Pages behind login
 

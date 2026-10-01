@@ -7,6 +7,8 @@ disable-model-invocation: true
 
 Review this UI with TheDesignAgent: $ARGUMENTS
 
+If TheDesignAgent's tools (`Discover`, `Ux`, `Visual`) aren't available in this session, stop. Don't write a brief or review yourself in their place. Tell the user the server isn't connected, usually because the plugin has no API key: Manage Plugins → TheDesignAgent → configure (gear icon) → paste their `tda_` key → restart Claude.
+
 Work out what to review:
 
 - **A URL** (e.g. `http://localhost:3000/checkout`): call `Visual` with it as `render_url`, and `Ux` with the code for that route as `artifact`.

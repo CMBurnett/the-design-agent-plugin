@@ -1,6 +1,6 @@
 ---
 name: design-loop
-description: Use when building or changing a UI screen, page or component and TheDesignAgent's MCP tools (Discover, Ux, Visual) are available. Get a build brief before building, then score the result and fix what the review finds.
+description: Use when building, changing or reviewing a UI screen, page or component. Gets a TheDesignAgent build brief before building (Discover), scores the result after (Ux, Visual) and fixes what the review finds.
 user-invocable: false
 ---
 
@@ -9,8 +9,14 @@ user-invocable: false
 TheDesignAgent gives you a brief before you build a screen and a scored review after. Follow this loop for any screen-sized UI task. Skip it for one-line style tweaks.
 
 ```
-identify project → discover → build → ux + visual → fix → (re-check once)
+set up (once) → identify project → Discover → build → Ux + Visual → fix → (re-check once)
 ```
+
+## 0. Check the tools, and set up once
+
+If TheDesignAgent's tools (`Discover`, `Ux`, `Visual`) aren't available in this session, stop. Don't write a brief or review yourself in their place. Tell the user the server isn't connected, usually because the plugin has no API key: Manage Plugins → TheDesignAgent → configure (gear icon) → paste their `tda_` key → restart Claude.
+
+If the repo has no `.thedesignagent` file, run the setup skill first. It registers the project and creates DESIGN.md if missing.
 
 ## 1. Identify the project
 
