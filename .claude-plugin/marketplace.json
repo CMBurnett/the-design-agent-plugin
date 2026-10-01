@@ -7,10 +7,13 @@
   },
   "plugins": [
     {
-      "name": "thedesignagent",
+      "name": "tda",
       "source": "./",
       "description": "UX and visual judgment for agent-built UI: a build brief before you build, a scored review after.",
       "category": "design"
     }
-  ]
+  ],
+  "renames": {
+    "thedesignagent": "tda"
+  }
 }

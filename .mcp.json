@@ -1,6 +1,6 @@
 {
   "mcpServers": {
-    "thedesignagent": {
+    "the_design_agent": {
       "command": "npx",
       "args": ["-y", "--package=@thedesignagent/mcp@^0.2.4", "thedesignagent-mcp"],
       "env": {

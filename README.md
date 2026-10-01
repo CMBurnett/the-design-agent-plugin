@@ -12,7 +12,7 @@ In Claude Code:
 
 ```
 /plugin marketplace add CMBurnett/the-design-agent-plugin
-/plugin install thedesignagent@thedesignagent
+/plugin install tda@thedesignagent
 ```
 
 You'll be asked for your API key. Get one at [thedesignagent.ai/dashboard/api-keys](https://thedesignagent.ai/dashboard/api-keys).
@@ -27,10 +27,10 @@ After installing or updating the plugin, fully restart Claude Code (in VS Code: 
 
 | Piece | What it does |
 | --- | --- |
-| MCP server `thedesignagent` | The `Discover`, `Ux` and `Visual` tools ([`@thedesignagent/mcp`](https://www.npmjs.com/package/@thedesignagent/mcp)) |
+| MCP server `the_design_agent` | The `Discover`, `Ux` and `Visual` tools ([`@thedesignagent/mcp`](https://www.npmjs.com/package/@thedesignagent/mcp)) |
 | Skill `design-loop` | Teaches the agent the brief → build → review → fix loop. Loads automatically for UI work |
-| `/thedesignagent:brief [task]` | Get a build brief for a screen |
-| `/thedesignagent:review [url\|file]` | Score a page, a file, or every UI file changed on the branch |
+| `/tda:brief [task]` | Get a build brief for a screen |
+| `/tda:review [url\|file]` | Score a page, a file, or every UI file changed on the branch |
 | Skill `design-md` | Write or update the project's `DESIGN.md` from its real tokens |
 | Hook | After UI files change, reminds the agent to run a review (first edit, then every 8th) |
 
