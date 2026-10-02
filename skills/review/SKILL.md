@@ -12,7 +12,9 @@ If TheDesignAgent's tools (`Discover`, `Ux`, `Visual`) aren't available in this 
 Work out what to review:
 
 - **A URL** (e.g. `http://localhost:3000/checkout`): call `Visual` with it as `render_url`, and `Ux` with the code for that route as `artifact`.
-- **A file**: call `Ux` and `Visual` with its contents as `artifact`. If the dev server is running and you can tell which route renders it, pass `render_url` too.
+- **A file**: call `Ux` and `Visual` with its contents as `artifact`. If you can tell which route renders it, pass that as `render_url` too.
+
+For any `render_url`, follow "Getting a real screenshot" in the design-loop skill: start the dev server if it isn't running, and handle a login wall the way `Visual` instructs.
 - **Nothing**: review the UI files changed on this branch (`git diff --name-only` against the default branch, filtered to `.tsx .jsx .vue .svelte .astro .html .css`). Group files by screen and review each screen once. If more than 5 screens changed, ask which to review first.
 
 Use the project identity from step 1 of the design-loop skill, and a `task` that names what the screen is for.

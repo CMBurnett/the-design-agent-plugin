@@ -44,11 +44,24 @@ Do the extraction yourself; don't ask the user to do it.
 Call both with the same `task` and the project identity:
 
 - `Ux`: pass the component code (or a precise description) as `artifact`. Scores heuristics, cognitive load, patterns and job fit.
-- `Visual`: if the page runs locally, pass `render_url` (for example `http://localhost:3000/approvals`) so it screenshots the real render. Without it, `Visual` falls back to reading code, which is weaker.
+- `Visual`: pass `render_url` (for example `http://localhost:3000/approvals`) so it screenshots the real render. Without it, `Visual` falls back to reading code, which is much weaker, so get a real screenshot whenever the screen has a route (next section).
 
-**Pages behind login:** `Visual` returns an auth-required message with a capture command. Stop and show the user that exact command. If `thedesignagent-auth` isn't installed, give the npx form:
-`npx -y --package=@thedesignagent/mcp thedesignagent-auth capture <origin>`
-Don't try to work out the app's auth or build `auth_seed` yourself.
+## Getting a real screenshot
+
+**1. Make sure the app is running.** Check the URL first (`curl -s -o /dev/null -w '%{http_code}' <url>`). If nothing answers, start the dev server yourself:
+
+- Pick the package manager from the lockfile (`pnpm-lock.yaml` → pnpm, `yarn.lock` → yarn, `bun.lockb` → bun, otherwise npm) and run the `dev` script, in the background. In a monorepo, run it in the workspace that serves the screen.
+- Wait until the URL answers with a 2xx or 3xx (poll every couple of seconds, up to about 90 seconds). Use the port the dev server prints if it isn't the one you expected.
+- Tell the user in one line that you started it. When you're done with the review, stop it if you started it.
+
+**2. Pages behind login.** If `Visual` says the page is behind login, it did not run and charged nothing. Follow its instructions, which will be one of:
+
+- **The repo has a login recipe** (`.thedesignagent-login.mjs`): run the command it gives. It logs in a test user with no browser and prints `TDA_AUTH_SAVED`.
+- **No recipe:** run the capture command it gives yourself, in the background. A browser window opens; tell the user in one line to log in there. It saves and closes by itself, then prints `TDA_AUTH_SAVED` (or `TDA_AUTH_FAILED` with a reason, and gives up after 10 minutes). Wait for it.
+
+Then retry `Visual` once. If it's still blocked, report that and continue with `Ux` alone. Don't work out the app's auth scheme or build `auth_seed` yourself.
+
+To check whether a session is already saved: `npx -y --package=@thedesignagent/mcp@^0.3.0 thedesignagent-auth status <url>`.
 
 ## 4. Act on the findings
 

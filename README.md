@@ -29,19 +29,23 @@ After installing or updating the plugin, fully restart Claude Code (in VS Code: 
 | --- | --- |
 | MCP server `the_design_agent` | The `Discover`, `Ux` and `Visual` tools ([`@thedesignagent/mcp`](https://www.npmjs.com/package/@thedesignagent/mcp)) |
 | Skill `design-loop` | Teaches the agent the brief → build → review → fix loop. Loads automatically for UI work |
-| `/tda:setup` | Set up a repo once: registers the project (`.thedesignagent`) and creates `DESIGN.md` if missing. Runs automatically before the first UI task |
+| `/tda:setup` | Set up a repo once: registers the project (`.thedesignagent`), creates `DESIGN.md` if missing, and sets up automatic login for screenshots. Runs automatically before the first UI task |
 | `/tda:brief [task]` | Get a build brief for a screen |
 | `/tda:review [url\|file]` | Score a page, a file, or every UI file changed on the branch |
 | Skill `design-md` | Write or update the project's `DESIGN.md` from its real tokens |
 | Hooks | At session start: warns if the API key isn't set, and prompts setup in UI repos that aren't registered yet. After UI files change: reminds the agent to run a review (first edit, then every 8th) |
 
-## Pages behind login
+## Screenshots and pages behind login
 
-`Visual` screenshots the page with headless Chrome. For pages behind login, capture a session once:
+`Visual` screenshots the page in a headless browser. The agent starts your dev server if it isn't running.
 
-```
-npx -y --package=@thedesignagent/mcp thedesignagent-auth capture http://localhost:3000
-```
+For pages behind login, `/tda:setup` sets up automatic login:
+
+- **Supabase apps:** a login recipe, `.thedesignagent-login.mjs`, that signs in a dedicated test user with no browser (from `templates/login-supabase.mjs`). It holds no secrets and can be committed.
+- **Passkey-only apps:** optionally, a dev-only login route the recipe can call (only with your approval, since it changes app code).
+- **Anything else:** the agent opens a browser window for you to log in once; it saves and closes by itself.
+
+If a session expires, `Visual` stops before reviewing (nothing is charged) and the agent refreshes the session the same way.
 
 ## Developing this plugin
 
