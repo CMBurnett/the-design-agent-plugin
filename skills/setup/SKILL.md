@@ -11,7 +11,7 @@ Run this once per repo. It leaves files to commit: `.thedesignagent` (the projec
 
 TheDesignAgent's tools are named `Discover`, `Ux` and `Visual`. If they aren't available in this session, stop. Don't set anything up by hand and don't substitute your own review. Tell the user:
 
-> TheDesignAgent's server isn't connected, usually because the plugin has no API key. Open Manage Plugins → TheDesignAgent → configure (gear icon), paste your `tda_` key, then restart Claude.
+> TheDesignAgent's server isn't connected, usually because it has no API key. In Claude Code, open Manage Plugins → TheDesignAgent → configure (gear icon), paste your `tda_` key, then restart. In other clients, run `npx -y --package=@thedesignagent/mcp@^0.4.0 thedesignagent login`, paste your key, then restart the client.
 
 ## 1. Already set up?
 
@@ -41,11 +41,11 @@ If there's no `DESIGN.md` in the repo root (check `docs/DESIGN.md` too, and use 
 **Supabase Auth with `@supabase/ssr`** (check `package.json` and how the server client is created): offer a login recipe. It signs in a dedicated test user with no browser.
 
 1. Ask the user which test user to sign in as. Suggest `tda-test@<their domain>`. Say plainly that the recipe will create that user in the Supabase project `.env.local` points at if it doesn't exist. If that's a shared or production project, confirm before going ahead.
-2. Copy the plugin's template to the repo root: `cp "${CLAUDE_PLUGIN_ROOT}/templates/login-supabase.mjs" .thedesignagent-login.mjs`. Set `TEST_EMAIL` and `APP_URL` (the local dev URL) at the top. If the app sets `cookieOptions.name` when creating its Supabase client, set `COOKIE_NAME_OVERRIDE` to that name.
+2. Copy this skill's template, `assets/login-supabase.mjs` (in the same folder as this SKILL.md), to the repo root as `.thedesignagent-login.mjs`. Set `TEST_EMAIL` and `APP_URL` (the local dev URL) at the top. If the app sets `cookieOptions.name` when creating its Supabase client, set `COOKIE_NAME_OVERRIDE` to that name.
 3. Make sure the dev server is running (see the design-loop skill), then test it against a page behind login:
 
    ```
-   node .thedesignagent-login.mjs | npx -y --package=@thedesignagent/mcp@^0.3.0 thedesignagent-auth login <a protected page URL>
+   node .thedesignagent-login.mjs | npx -y --package=@thedesignagent/mcp@^0.4.0 thedesignagent-auth login <a protected page URL>
    ```
 
    `TDA_AUTH_SAVED` means it works. The recipe holds no secrets (it reads keys from `.env.local` at run time), so it can be committed.
@@ -53,7 +53,7 @@ If there's no `DESIGN.md` in the repo root (check `docs/DESIGN.md` too, and use 
 
 **Passkey-only or other auth the recipe can't satisfy:** offer a **dev-only login route**, for example `/__dev/login`, that signs in the test user and completes whatever the app requires. It must return 404 unless `NODE_ENV === 'development'` and must check a secret from `.env.local`. Then write `.thedesignagent-login.mjs` to print that route's URL (with the secret read from `.env.local` at run time). This changes app code, so explain it and wait for approval.
 
-**Anything else, or if the user declines:** offer to capture a session now by hand. Run `npx -y --package=@thedesignagent/mcp@^0.3.0 thedesignagent-auth capture <a protected page URL>` in the background, ask the user to log in in the window that opens, and wait for `TDA_AUTH_SAVED`.
+**Anything else, or if the user declines:** offer to capture a session now by hand. Run `npx -y --package=@thedesignagent/mcp@^0.4.0 thedesignagent-auth capture <a protected page URL>` in the background, ask the user to log in in the window that opens, and wait for `TDA_AUTH_SAVED`.
 
 ## 5. Report
 

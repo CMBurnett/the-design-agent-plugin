@@ -1,0 +1,25 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "tda",
+  "version": "0.5.0",
+  "description": "UX and visual judgment for agent-built UI: a build brief before you build, a scored review after.",
+  "author": {
+    "name": "TheDesignAgent",
+    "url": "https://thedesignagent.ai"
+  },
+  "homepage": "https://thedesignagent.ai",
+  "repository": "https://github.com/CMBurnett/the-design-agent-plugin",
+  "keywords": ["design", "ux", "ui-review", "design-system", "accessibility"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "TheDesignAgent",
+        "shortDescription": "A build brief before you build a screen, a scored UX and visual review after.",
+        "longDescription": "TheDesignAgent gives your coding agent design judgment. Before it builds a screen, it gets a brief calibrated to your product, your users' jobs and your design system. After, it gets a 0-10 UX and visual score from a real screenshot, with findings to fix. Project context is stored, so every review sharpens the next brief.",
+        "developerName": "TheDesignAgent",
+        "category": "Design",
+        "websiteURL": "https://thedesignagent.ai"
+      }
+    }
+  }
+}

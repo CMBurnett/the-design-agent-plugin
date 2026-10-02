@@ -1,6 +1,6 @@
 # TheDesignAgent plugin
 
-UX and visual judgment for agent-built UI, for Claude Code and Grok Build.
+UX and visual judgment for agent-built UI, for Claude Code, Grok Build, Codex, Cursor, VS Code with GitHub Copilot, and other clients that load [Agent Plugins](https://agent-plugins.org).
 
 - **Before you build:** a brief calibrated to your project, its users and the screen (`Discover`).
 - **After you build:** a 0–10 score with findings for UX and visual design (`Ux`, `Visual`), from a real screenshot when the page is running.
@@ -23,6 +23,23 @@ Requires Node.js 20+ (the MCP server runs through `npx`).
 
 After installing or updating the plugin, fully restart Claude Code (in VS Code: Command Palette → Developer: Reload Window). Reloading plugins refreshes skills and hooks but keeps the old MCP server running.
 
+### Codex, VS Code, GitHub Copilot CLI, Cursor and other Agent Plugins clients
+
+The same repo is an [Agent Plugins 1.0](https://agent-plugins.org) package (`plugin.json`, `mcp.json`, `skills/`). These clients have no standard way to ask for an API key, so save it once first:
+
+```
+npx -y --package=@thedesignagent/mcp thedesignagent login
+```
+
+It goes to `~/.thedesignagent/credentials`, readable only by you, and every client (and the `thedesignagent` CLI) uses it. Then install:
+
+- **Codex:** `codex plugin marketplace add CMBurnett/the-design-agent-plugin`, then `codex plugin add tda@thedesignagent`.
+- **VS Code:** Command Palette → **Chat: Install Plugin From Source** → `https://github.com/CMBurnett/the-design-agent-plugin`.
+- **GitHub Copilot CLI:** `copilot plugin install CMBurnett/the-design-agent-plugin`.
+- **Cursor and others:** install from the repo URL if the client supports Agent Plugins; otherwise add the MCP server on its own (see [`@thedesignagent/mcp`](https://www.npmjs.com/package/@thedesignagent/mcp)).
+
+Outside Claude Code you get the MCP server and the skills (`design-loop`, `setup`, `brief`, `review`, `design-md`); the session-start and after-edit hooks are Claude Code only.
+
 ## What's included
 
 | Piece | What it does |
@@ -41,7 +58,7 @@ After installing or updating the plugin, fully restart Claude Code (in VS Code: 
 
 For pages behind login, `/tda:setup` sets up automatic login:
 
-- **Supabase apps:** a login recipe, `.thedesignagent-login.mjs`, that signs in a dedicated test user with no browser (from `templates/login-supabase.mjs`). It holds no secrets and can be committed.
+- **Supabase apps:** a login recipe, `.thedesignagent-login.mjs`, that signs in a dedicated test user with no browser (from `skills/setup/assets/login-supabase.mjs`). It holds no secrets and can be committed.
 - **Passkey-only apps:** optionally, a dev-only login route the recipe can call (only with your approval, since it changes app code).
 - **Anything else:** the agent opens a browser window for you to log in once; it saves and closes by itself.
 
