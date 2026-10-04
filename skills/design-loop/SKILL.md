@@ -48,7 +48,7 @@ Call both with the same `task` and the project identity:
 
 ## Getting a real screenshot
 
-**1. Make sure the app is running.** Check the URL first (`curl -s -o /dev/null -w '%{http_code}' <url>`). If nothing answers, start the dev server yourself:
+**1. Make sure the app is running.** Check whether the URL answers first. If nothing answers, start the dev server yourself:
 
 - Pick the package manager from the lockfile (`pnpm-lock.yaml` → pnpm, `yarn.lock` → yarn, `bun.lockb` → bun, otherwise npm) and run the `dev` script, in the background. In a monorepo, run it in the workspace that serves the screen.
 - Wait until the URL answers with a 2xx or 3xx (poll every couple of seconds, up to about 90 seconds). Use the port the dev server prints if it isn't the one you expected.
