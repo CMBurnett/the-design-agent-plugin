@@ -2,7 +2,7 @@
   "mcpServers": {
     "the_design_agent": {
       "command": "npx",
-      "args": ["-y", "--package=@thedesignagent/mcp@0.4.3", "thedesignagent-mcp"],
+      "args": ["-y", "--package=@thedesignagent/mcp@0.5.0", "thedesignagent-mcp"],
       "env": {
         "THEDESIGNAGENT_API_KEY": "${user_config.api_key}",
         "THEDESIGNAGENT_CHANNEL": "plugin"

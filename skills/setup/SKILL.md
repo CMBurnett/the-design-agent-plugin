@@ -11,22 +11,31 @@ Run this once per repo. It leaves files to commit: `.thedesignagent` (the projec
 
 TheDesignAgent's tools are named `Discover`, `Ux` and `Visual`. If they aren't available in this session, stop. Don't set anything up by hand and don't substitute your own review. Tell the user:
 
-> TheDesignAgent's server isn't connected, usually because it has no API key. In Claude Code, open Manage Plugins → TheDesignAgent → configure (gear icon), paste your `tda_` key, then restart. In other clients, run `npx -y --package=@thedesignagent/mcp@0.4.3 thedesignagent login`, paste your key, then restart the client.
+> TheDesignAgent's server isn't connected, usually because it has no API key. In Claude Code, open Manage Plugins → TheDesignAgent → configure (gear icon), paste your `tda_` key, then restart. In other clients, run `npx -y --package=@thedesignagent/mcp@0.5.0 thedesignagent login`, paste your key, then restart the client.
 
 ## 1. Already set up?
 
-If `.thedesignagent` exists in the repo root, say so and skip to step 3.
+If `.thedesignagent` exists in the repo root, say so. If it has no `check.pages` list yet, do step 2.3 to add the page inventory (send the updated `project_model` with its `routes`, then write `check.pages` as in 2.4), then continue with step 3. Otherwise skip to step 3.
 
 ## 2. Register the project
 
 1. Write a one-line `task` describing the product and its main screen, from README, CLAUDE.md or AGENTS.md (for example "Order desk app: the incoming orders queue").
 2. Call `Discover` with that `task` and `repo_hash` (SHA-256 of the git remote URL: `git remote get-url origin | tr -d '\n' | shasum -a 256 | cut -d' ' -f1`).
-3. It returns **Setup Required** with an extraction task. Do the extraction yourself: read CLAUDE.md or AGENTS.md, schema, migration and type files, and modules, and build the `project_model` it describes. Set `schema_hash` to the SHA-256 of the schema/type files you read, concatenated in path order. Call `Discover` again with `project_id`, `project_model` and `schema_hash`.
-4. On a **Build Brief**, write `.thedesignagent` in the repo root:
+3. It returns **Setup Required** with an extraction task. Do the extraction yourself: read CLAUDE.md or AGENTS.md, schema, migration and type files, and modules, and build the `project_model` it describes. Include `routes`: every page or view a user can visit (for Next.js App Router, each `app/**/page.*`), each with its `path`, `source_file`, a one-line `purpose` and its `primary_action`. TheDesignAgent maps each page to the job it serves, so reviews judge every page against its own job rather than the product's main one. Set `schema_hash` to the SHA-256 of the schema/type files you read, concatenated in path order. Call `Discover` again with `project_id`, `project_model` and `schema_hash`.
+4. On a **Build Brief**, write `.thedesignagent` in the repo root, with a `check.pages` entry for each route that has a concrete URL (skip dynamic ones like `/orders/[id]` unless you know a real id). The `task` is the page's job in one line, from its `purpose`:
 
    ```json
-   { "project_id": "<project_id from the response>" }
+   {
+     "project_id": "<project_id from the response>",
+     "check": {
+       "pages": [
+         { "path": "/orders", "code": "app/orders/page.tsx", "task": "A planner clears today's incoming orders" }
+       ]
+     }
+   }
    ```
+
+   The CLI and the pull request gate use these tasks, so each page is reviewed against its own job.
 
 If the second call still returns Setup Required, or returns a pipeline error (5xx), stop and show the user the response. Keep the extracted model in the conversation so a retry is one call.
 
@@ -45,7 +54,7 @@ If there's no `DESIGN.md` in the repo root (check `docs/DESIGN.md` too, and use 
 3. Make sure the dev server is running (see the design-loop skill), then test it against a page behind login:
 
    ```
-   node .thedesignagent-login.mjs | npx -y --package=@thedesignagent/mcp@0.4.3 thedesignagent-auth login <a protected page URL>
+   node .thedesignagent-login.mjs | npx -y --package=@thedesignagent/mcp@0.5.0 thedesignagent-auth login <a protected page URL>
    ```
 
    `TDA_AUTH_SAVED` means it works. The recipe holds no secrets (it reads keys from `.env.local` at run time), so it can be committed.
@@ -53,7 +62,7 @@ If there's no `DESIGN.md` in the repo root (check `docs/DESIGN.md` too, and use 
 
 **Passkey-only or other auth the recipe can't satisfy:** offer a **dev-only login route**, for example `/__dev/login`, that signs in the test user and completes whatever the app requires. It must return 404 unless `NODE_ENV === 'development'` and must check a secret from `.env.local`. Then write `.thedesignagent-login.mjs` to print that route's URL (with the secret read from `.env.local` at run time). This changes app code, so explain it and wait for approval.
 
-**Anything else, or if the user declines:** offer to capture a session now by hand. Run `npx -y --package=@thedesignagent/mcp@0.4.3 thedesignagent-auth capture <a protected page URL>` in the background, ask the user to log in in the window that opens, and wait for `TDA_AUTH_SAVED`.
+**Anything else, or if the user declines:** offer to capture a session now by hand. Run `npx -y --package=@thedesignagent/mcp@0.5.0 thedesignagent-auth capture <a protected page URL>` in the background, ask the user to log in in the window that opens, and wait for `TDA_AUTH_SAVED`.
 
 ## 5. Report
 
