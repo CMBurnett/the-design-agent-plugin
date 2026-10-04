@@ -1,7 +1,7 @@
 {
   "name": "tda",
   "displayName": "TheDesignAgent",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "UX and visual judgment for agent-built UI: a build brief before you build, a scored review after.",
   "author": {
     "name": "TheDesignAgent",
