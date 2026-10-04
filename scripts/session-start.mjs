@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 // SessionStart hook: make TheDesignAgent's state explicit at the start of every session.
-//  - No API key → tell the user where to set it, and tell Claude the tools are unavailable
-//    so it doesn't quietly substitute its own review.
-//  - Key set but the repo isn't registered (.thedesignagent missing) in a UI project →
+//  - The repo isn't registered (.thedesignagent missing) in a UI project →
 //    tell Claude to run the setup skill before the first UI task.
 //  - Registered but no DESIGN.md → tell Claude to offer one.
 // Always exits 0: session start must never be blocked.
@@ -30,18 +28,8 @@ try {
   let input = {}
   try { input = JSON.parse(readFileSync(0, 'utf8')) } catch {}
   const dir = input.cwd || process.cwd()
-  const key = (process.env.CLAUDE_PLUGIN_OPTION_API_KEY || '').trim()
 
-  if (!key) {
-    emit(
-      [
-        "TheDesignAgent's tools are unavailable this session: the plugin has no API key, so its MCP server didn't start.",
-        "If the user asks for a TheDesignAgent brief or review (/tda:brief, /tda:review, /tda:setup), don't do the review yourself.",
-        'Tell them to set the key: Manage Plugins → TheDesignAgent → configure (gear icon) → paste their tda_ key → restart Claude.',
-      ].join(' '),
-      'TheDesignAgent needs your API key. Open Manage Plugins → TheDesignAgent → configure (gear icon), paste your tda_ key, then restart Claude.',
-    )
-  } else if (!existsSync(join(dir, '.thedesignagent'))) {
+  if (!existsSync(join(dir, '.thedesignagent'))) {
     if (isUiProject(dir)) {
       emit([
         "This repo isn't set up with TheDesignAgent yet (no .thedesignagent file).",

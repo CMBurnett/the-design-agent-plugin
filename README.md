@@ -50,7 +50,7 @@ Outside Claude Code you get the MCP server and the skills (`design-loop`, `setup
 | `/tda:brief [task]` | Get a build brief for a screen |
 | `/tda:review [url\|file]` | Score a page, a file, or every UI file changed on the branch |
 | Skill `design-md` | Write or update the project's `DESIGN.md` from its real tokens |
-| Hooks | At session start: warns if the API key isn't set, and prompts setup in UI repos that aren't registered yet. After UI files change: reminds the agent to run a review (first edit, then every 8th) |
+| Hooks | At session start: prompts setup in UI repos that aren't registered yet. After UI files change: reminds the agent to run a review (first edit, then every 8th) |
 
 ## Screenshots and pages behind login
 
