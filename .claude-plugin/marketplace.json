@@ -3,7 +3,7 @@
   "description": "TheDesignAgent plugins for Claude Code and Grok Build",
   "owner": {
     "name": "TheDesignAgent",
-    "url": "https://thedesignagent.ai"
+    "url": "https://www.thedesignagent.ai"
   },
   "plugins": [
     {

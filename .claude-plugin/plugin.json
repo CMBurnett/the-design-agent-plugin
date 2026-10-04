@@ -1,20 +1,21 @@
 {
   "name": "tda",
   "displayName": "TheDesignAgent",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "UX and visual judgment for agent-built UI: a build brief before you build, a scored review after.",
   "author": {
     "name": "TheDesignAgent",
-    "url": "https://thedesignagent.ai"
+    "url": "https://www.thedesignagent.ai"
   },
-  "homepage": "https://thedesignagent.ai",
+  "homepage": "https://www.thedesignagent.ai",
   "repository": "https://github.com/CMBurnett/the-design-agent-plugin",
-  "keywords": ["design", "ux", "ui-review", "design-system", "accessibility"],
+  "license": "MIT",
+  "keywords": ["design-agent", "design", "ux", "ui-review", "design-system", "mcp", "claude-code", "codex", "cursor"],
   "userConfig": {
     "api_key": {
       "type": "string",
       "title": "TheDesignAgent API key",
-      "description": "Your tda_ key from https://thedesignagent.ai/dashboard/api-keys",
+      "description": "Your tda_ key from https://www.thedesignagent.ai/dashboard/api-keys",
       "required": true,
       "sensitive": true
     }

@@ -1,10 +1,10 @@
 # TheDesignAgent plugin
 
-UX and visual judgment for agent-built UI, for Claude Code, Grok Build, Codex, Cursor, VS Code with GitHub Copilot, and other clients that load [Agent Plugins](https://agent-plugins.org).
+A design agent in your coding agent's loop, for Claude Code, Grok Build, Codex, Cursor, VS Code with GitHub Copilot, and other clients that load [Agent Plugins](https://agent-plugins.org). It works in layers:
 
 - **Before you build:** a brief calibrated to your project, its users and the screen (`Discover`).
 - **After you build:** a 0–10 score with findings for UX and visual design (`Ux`, `Visual`), from a real screenshot when the page is running.
-- **Every agent on the repo shares the same project context** through a `.thedesignagent` file.
+- **Project memory:** every agent on the repo shares the same project context through a `.thedesignagent` file, and each review shapes the next brief.
 
 ## Install
 
@@ -15,7 +15,7 @@ In Claude Code:
 /plugin install tda@thedesignagent
 ```
 
-You'll be asked for your API key. If you weren't, or the tools don't appear, set it in Manage Plugins → TheDesignAgent → configure (gear icon), then restart Claude. Get one at [thedesignagent.ai/dashboard/api-keys](https://thedesignagent.ai/dashboard/api-keys).
+You'll be asked for your API key. If you weren't, or the tools don't appear, set it in Manage Plugins → TheDesignAgent → configure (gear icon), then restart Claude. Get one at [thedesignagent.ai/dashboard/api-keys](https://www.thedesignagent.ai/dashboard/api-keys).
 
 Grok Build reads Claude Code plugins, so the same install works there.
 
@@ -72,7 +72,7 @@ Load it from a local checkout without installing:
 claude --plugin-dir ./the-design-agent-plugin
 ```
 
-Until `@thedesignagent/mcp` is published to npm, point the server at a local build: in the repo you test in, add a `.mcp.json` whose `thedesignagent` server runs `node <path-to>/the-design-agent/mcp-server/dist/index.js` with `THEDESIGNAGENT_API_KEY` set.
+To test against a local build of the MCP server, add a `.mcp.json` in the repo you test in whose `thedesignagent` server runs `node <path-to>/the-design-agent/mcp-server/dist/index.js` with `THEDESIGNAGENT_API_KEY` set.
 
 Test the hook on its own:
 
@@ -85,3 +85,11 @@ Validate before a release:
 ```
 claude plugin validate .
 ```
+
+## Support
+
+Email [thedesignagent@borntall.com](mailto:thedesignagent@borntall.com) or see [thedesignagent.ai/support](https://www.thedesignagent.ai/support). Privacy policy and terms: [thedesignagent.ai/privacy](https://www.thedesignagent.ai/privacy), [thedesignagent.ai/terms](https://www.thedesignagent.ai/terms).
+
+## License
+
+MIT. See [LICENSE](LICENSE).
