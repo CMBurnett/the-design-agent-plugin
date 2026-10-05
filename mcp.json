@@ -4,7 +4,7 @@
     "the_design_agent": {
       "type": "stdio",
       "command": "npx",
-      "args": ["-y", "--package=@thedesignagent/mcp@0.5.0", "thedesignagent-mcp"],
+      "args": ["-y", "--package=@thedesignagent/mcp@0.5.1", "thedesignagent-mcp"],
       "env": { "THEDESIGNAGENT_CHANNEL": "plugin" }
     }
   }

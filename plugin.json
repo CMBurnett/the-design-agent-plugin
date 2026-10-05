@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "tda",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "UX and visual judgment for agent-built UI: a build brief before you build, a scored review after.",
   "author": {
     "name": "TheDesignAgent",
