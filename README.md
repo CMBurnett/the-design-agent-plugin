@@ -98,6 +98,13 @@ Validate before a release:
 claude plugin validate .
 ```
 
+
+## What it connects to
+
+- **Network:** the MCP server sends your task, the code or page under review, and a screenshot to TheDesignAgent: `https://www.thedesignagent.ai/mcp` (hosted server, used by the Cursor plugin and Gemini extension) or `https://bxqifcmkydlsgwgcpqda.supabase.co/functions/v1` (called by the local npm server). `npx` downloads `@thedesignagent/mcp` from the npm registry at the version pinned in `mcp.json` and `.mcp.json`.
+- **Credentials:** a TheDesignAgent API key (`tda_...`), from the plugin setting or `~/.thedesignagent/credentials`, or an OAuth sign-in for the hosted server. Nothing else is read.
+- **Hooks:** two local Node scripts with no network access. `SessionStart` checks `package.json` for UI dependencies; `PostToolUse` on `Write|Edit|MultiEdit` counts UI file edits and suggests a review.
+
 ## Support
 
 Email [thedesignagent@borntall.com](mailto:thedesignagent@borntall.com) or see [thedesignagent.ai/support](https://www.thedesignagent.ai/support). Privacy policy and terms: [thedesignagent.ai/privacy](https://www.thedesignagent.ai/privacy), [thedesignagent.ai/terms](https://www.thedesignagent.ai/terms).
