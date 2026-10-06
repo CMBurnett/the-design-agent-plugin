@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "tda",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "UX and visual judgment for agent-built UI: a build brief before you build, a scored review after.",
   "author": {
     "name": "TheDesignAgent",
@@ -10,7 +10,17 @@
   "homepage": "https://www.thedesignagent.ai",
   "repository": "https://github.com/CMBurnett/the-design-agent-plugin",
   "license": "MIT",
-  "keywords": ["design-agent", "design", "ux", "ui-review", "design-system", "mcp", "claude-code", "codex", "cursor"],
+  "keywords": [
+    "design-agent",
+    "design",
+    "ux",
+    "ui-review",
+    "design-system",
+    "mcp",
+    "claude-code",
+    "codex",
+    "cursor"
+  ],
   "extensions": {
     "com.openai": {
       "interface": {
@@ -19,7 +29,9 @@
         "longDescription": "TheDesignAgent gives your coding agent design judgment. Before it builds a screen, it gets a brief calibrated to your product, your users' jobs and your design system. After, it gets a 0-10 UX and visual score from a real screenshot, with findings to fix. Project context is stored, so every review sharpens the next brief.",
         "developerName": "TheDesignAgent",
         "category": "Design",
-        "websiteURL": "https://www.thedesignagent.ai"
+        "websiteURL": "https://www.thedesignagent.ai",
+        "logo": "./assets/logo.png",
+        "composerIcon": "./assets/logo.png"
       }
     }
   }

@@ -1,0 +1,20 @@
+{
+  "name": "thedesignagent",
+  "displayName": "TheDesignAgent",
+  "version": "0.6.2",
+  "description": "A design agent in your coding agent's loop: a build brief before you build a screen, a scored UX and visual review after.",
+  "author": {
+    "name": "TheDesignAgent",
+    "email": "thedesignagent@borntall.com"
+  },
+  "publisher": "TheDesignAgent",
+  "homepage": "https://www.thedesignagent.ai",
+  "repository": "https://github.com/CMBurnett/the-design-agent-plugin",
+  "license": "MIT",
+  "logo": "assets/logo.png",
+  "keywords": ["design-review", "ux-review", "visual-review", "design-system", "ui", "mcp"],
+  "category": "developer-tools",
+  "tags": ["design", "ux", "review", "mcp"],
+  "skills": "./skills/",
+  "mcpServers": "./.cursor-plugin/mcp.json"
+}

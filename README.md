@@ -38,6 +38,18 @@ It goes to `~/.thedesignagent/credentials`, readable only by you, and every clie
 - **GitHub Copilot CLI:** `copilot plugin install CMBurnett/the-design-agent-plugin`.
 - **Cursor and others:** install from the repo URL if the client supports Agent Plugins; otherwise add the MCP server on its own (see [`@thedesignagent/mcp`](https://www.npmjs.com/package/@thedesignagent/mcp)).
 
+### Cursor
+
+The Cursor plugin (`.cursor-plugin/`) uses the hosted server, so there's no key to save: after installing, Cursor shows TheDesignAgent as needing a login; click it and sign in to your TheDesignAgent account in the browser. The hosted server reviews public pages and preview deploys. To screenshot pages on `localhost`, add the local server from [`@thedesignagent/mcp`](https://www.npmjs.com/package/@thedesignagent/mcp) as well.
+
+### Gemini CLI
+
+```
+gemini extensions install https://github.com/CMBurnett/the-design-agent-plugin
+```
+
+Then run `/mcp auth thedesignagent` and sign in in the browser. `GEMINI.md` tells Gemini when to call the tools.
+
 Outside Claude Code you get the MCP server and the skills (`design-loop`, `setup`, `brief`, `review`, `design-md`); the session-start and after-edit hooks are Claude Code only.
 
 ## What's included

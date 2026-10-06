@@ -1,0 +1,11 @@
+{
+  "name": "thedesignagent",
+  "version": "0.6.2",
+  "description": "A design agent in your coding agent's loop: a build brief before you build a screen, a scored UX and visual review after.",
+  "mcpServers": {
+    "thedesignagent": {
+      "httpUrl": "https://www.thedesignagent.ai/mcp"
+    }
+  },
+  "contextFileName": "GEMINI.md"
+}
