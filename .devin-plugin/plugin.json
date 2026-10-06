@@ -1,0 +1,17 @@
+{
+  "name": "thedesignagent",
+  "displayName": "TheDesignAgent",
+  "description": "A design agent in your coding agent's loop: a build brief before you build a screen, then a scored UX and visual review of the result, judged against the page's job.",
+  "homepage": "https://www.thedesignagent.ai",
+  "repository": "https://github.com/CMBurnett/the-design-agent-plugin",
+  "logo": "assets/logo.png",
+  "keywords": [
+    "Development",
+    "Design"
+  ],
+  "mcpServers": {
+    "thedesignagent": {
+      "url": "https://www.thedesignagent.ai/mcp"
+    }
+  }
+}
