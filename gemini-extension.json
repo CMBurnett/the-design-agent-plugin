@@ -1,6 +1,6 @@
 {
   "name": "thedesignagent",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "description": "A design agent in your coding agent's loop: a build brief before you build a screen, a scored UX and visual review after.",
   "mcpServers": {
     "thedesignagent": {

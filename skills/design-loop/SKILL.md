@@ -14,7 +14,7 @@ set up (once) → identify project → Discover → build → Ux + Visual → fi
 
 ## 0. Check the tools, and set up once
 
-If TheDesignAgent's tools (`Discover`, `Ux`, `Visual`) aren't available in this session, stop. Don't write a brief or review yourself in their place. Tell the user the server isn't connected, usually because it has no API key. In Claude Code: Manage Plugins → TheDesignAgent → configure (gear icon) → paste their `tda_` key → restart. In other clients (Codex, Cursor, VS Code, Copilot): run `npx -y --package=@thedesignagent/mcp@0.5.1 thedesignagent login`, paste the key, then restart the client or reload its MCP servers.
+If TheDesignAgent's tools (`Discover`, `Ux`, `Visual`) aren't available in this session, stop. Don't write a brief or review yourself in their place. Tell the user the server isn't connected, usually because it has no API key. In Claude Code: Manage Plugins → TheDesignAgent → configure (gear icon) → paste their `tda_` key → restart. In other clients (Codex, Cursor, VS Code, Copilot): run `npx -y --package=@thedesignagent/mcp@0.5.2 thedesignagent login`, paste the key, then restart the client or reload its MCP servers.
 
 If the repo has no `.thedesignagent` file, run the setup skill first. It registers the project and creates DESIGN.md if missing.
 
@@ -61,7 +61,7 @@ Call both with the same `task` and the project identity:
 
 Then retry `Visual` once. If it's still blocked, report that and continue with `Ux` alone. Don't work out the app's auth scheme or build `auth_seed` yourself.
 
-To check whether a session is already saved: `npx -y --package=@thedesignagent/mcp@0.5.1 thedesignagent-auth status <url>`.
+To check whether a session is already saved: `npx -y --package=@thedesignagent/mcp@0.5.2 thedesignagent-auth status <url>`.
 
 ## 4. Act on the findings
 
@@ -74,6 +74,6 @@ To check whether a session is already saved: `npx -y --package=@thedesignagent/m
 
 - **Account error**: show the user the message and stop calling the tools. Don't retry.
 - **Rate limited**: wait briefly, retry once, then carry on without the review.
-- **Authentication failed** (the response itself is a 401 or 403): the user's API key is missing or wrong. Tell the user to set it: in Claude Code, in the plugin's settings; elsewhere, with `npx -y --package=@thedesignagent/mcp@0.5.1 thedesignagent login`.
+- **Authentication failed** (the response itself is a 401 or 403): the user's API key is missing or wrong. Tell the user to set it: in Claude Code, in the plugin's settings; elsewhere, with `npx -y --package=@thedesignagent/mcp@0.5.2 thedesignagent login`.
 - **Pipeline error** (a 5xx, such as `Pipeline error (503)`): a problem on TheDesignAgent's side, even if the detail mentions an API key; that is the pipeline's own key, not the user's. Tell the user the service is having trouble, keep any extracted `project_model` so a retry is one call, and carry on without the brief or review.
 - **Pipeline unavailable**: carry on with the build and say the review couldn't run.
